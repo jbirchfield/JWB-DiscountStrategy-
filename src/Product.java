@@ -62,13 +62,13 @@ public class Product {
  
  //   }
     
-    public static void main(String[] args) {
-        Product prod1 = new Product("B345", "Pants",25.00, new QtyVariableRateDiscount(0.20, 6));
-        double amt1 = prod1.getDiscountAmt(5);
-        System.out.println("Discount amt: " + amt1);
-        Product prod2 = new Product("B345", "Pants",25.00, new VariableRateDiscount(0.10));
-        double amt2 = prod2.getDiscountAmt(5);
-        System.out.println("Discount amt: " + amt2);
-    }
+//    public static void main(String[] args) {
+//        Product prod1 = new Product("B345", "Pants",25.00, new QtyVariableRateDiscount(0.20, 6));
+//        double amt1 = prod1.getDiscountAmt(5);
+//        System.out.println("Discount amt: " + amt1);
+//        Product prod2 = new Product("B345", "Pants",25.00, new VariableRateDiscount(0.10));
+//        double amt2 = prod2.getDiscountAmt(5);
+//        System.out.println("Discount amt: " + amt2);
+//    }
     
 }
