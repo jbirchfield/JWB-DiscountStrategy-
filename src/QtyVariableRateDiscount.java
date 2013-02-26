@@ -5,13 +5,13 @@ public class QtyVariableRateDiscount implements DiscountStrategy{
             
     
     
-    public QtyVariableRateDiscount(double rate, int qty) {
+    public QtyVariableRateDiscount(double rate, int minimumQty) {
         discountRate = rate;
-        minQty = qty;
+        minQty = minimumQty;
     } 
-    public double getDiscountAmt(int qty, double unitCost) {
-        if (qty >= minQty)
-            {return unitCost * qty * discountRate;}
+    public double getDiscountAmt(int qtyPurchased, double unitCost) {
+        if (qtyPurchased >= minQty)
+            {return unitCost * qtyPurchased * discountRate;}
         else
             return 0;
     }

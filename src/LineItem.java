@@ -2,37 +2,14 @@
  * 
  */
 public class LineItem {
-    private String prodID;
-    private String prodName;
     private int prodQty;
-    private double unitCost;
     private Product product;
-
-    public LineItem() {
-        
-    }
+    private FakeDatabase db;
     
-    public LineItem(String prID, String prName, int qty, double cost) {
-        prodID = prID;
-        prodName = prName;
+    public LineItem(String prID, int qty) {
+        db = new FakeDatabase();
+        product = db.findProduct(prID);
         prodQty = qty;
-        unitCost = cost;
-    }
-
-    public String getProdID() {
-        return prodID;
-    }
-
-    public void setProdID(String prodID) {
-        this.prodID = prodID;
-    }
-
-    public String getProdName() {
-        return prodName;
-    }
-
-    public void setProdName(String prodName) {
-        this.prodName = prodName;
     }
 
     public int getProdQty() {
@@ -42,21 +19,30 @@ public class LineItem {
     public void setProdQty(int prodQty) {
         this.prodQty = prodQty;
     }
-
-    public double getUnitCost() {
-        return unitCost;
-    }
-
-    public void setUnitCost(double unitCost) {
-        this.unitCost = unitCost;
+    
+    public double getExtendedPrice(){
+        return product.getUnitCost() * prodQty;
+    }    
+    
+    public String getProductID(){
+        return product.getProductID();
     }
     
+    public String getProductName(){
+        return product.getProductName();
+    }
+    
+    public double getDiscount(){
+        return product.getDiscountAmt(prodQty);
+    }
     public static void main(String[] args) {
-        Product prod1 = new Product("B345", "Pants",25.00, new QtyVariableRateDiscount(0.20, 6));
-        double amt1 = prod1.getDiscountAmt(5);
+        // Expect .15 discount because qty >= 5
+        LineItem lineItem = new LineItem("A101",4);
+        double amt1 = lineItem.product.getDiscountAmt(lineItem.prodQty);
         System.out.println("Discount amt: " + amt1);
-        Product prod2 = new Product("B345", "Pants",25.00, new VariableRateDiscount(0.10));
-        double amt2 = prod2.getDiscountAmt(5);
-        System.out.println("Discount amt: " + amt2);
+        System.out.println("Prod ID: " + lineItem.product.getProductID() );
+        System.out.println("Product :" + lineItem.product.getProductName());
+        System.out.println("Unit Cost: " + lineItem.product.getUnitCost());
+
     }
 }
