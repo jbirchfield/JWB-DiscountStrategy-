@@ -45,6 +45,7 @@ public class LineItem {
         System.out.println("Quantity: " + lineItem.prodQty);
         System.out.println("Extended Price: " + lineItem.getExtendedPrice());
         System.out.println("Discount: " + lineItem.getDiscount());
+        System.out.println("Total: " + (lineItem.getExtendedPrice() - lineItem.getDiscount()));
         
         
 

@@ -40,7 +40,7 @@ public class Receipt {
     public double getTotalBeforeDiscount() {
         double grandTotal = 0.0;
         for(LineItem item : lineItems) {
-            grandTotal += item.getOrigPriceSubtotal();
+            grandTotal += item.getExtendedPrice();
         }
         return grandTotal;
     }
@@ -52,6 +52,7 @@ public class Receipt {
         Receipt receipt = new Receipt("100");
         System.out.println("CustID: " + receipt.customer.getCustId());
         System.out.println("Customer Name :" + receipt.customer.getFullName());
+        System.out.println("Total: " + receipt.getTotalBeforeDiscount());
     
     }
     
