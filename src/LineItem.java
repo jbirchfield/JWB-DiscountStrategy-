@@ -24,6 +24,7 @@ public class LineItem {
         return product.getUnitCost() * prodQty;
     }    
     
+    
     public String getProductID(){
         return product.getProductID();
     }
@@ -37,12 +38,15 @@ public class LineItem {
     }
     public static void main(String[] args) {
         // Expect .15 discount because qty >= 5
-        LineItem lineItem = new LineItem("A101",4);
-        double amt1 = lineItem.product.getDiscountAmt(lineItem.prodQty);
-        System.out.println("Discount amt: " + amt1);
+        LineItem lineItem = new LineItem("A101",6);
         System.out.println("Prod ID: " + lineItem.product.getProductID() );
-        System.out.println("Product :" + lineItem.product.getProductName());
+        System.out.println("Product: " + lineItem.product.getProductName());
         System.out.println("Unit Cost: " + lineItem.product.getUnitCost());
+        System.out.println("Quantity: " + lineItem.prodQty);
+        System.out.println("Extended Price: " + lineItem.getExtendedPrice());
+        System.out.println("Discount: " + lineItem.getDiscount());
+        
+        
 
     }
 }
