@@ -37,7 +37,7 @@ public class Receipt {
     
                     
               
-    public double getTotalBeforeDiscount() {
+    public double getTotalBeforeDiscount(){ 
         double grandTotal = 0.0;
         for(LineItem item : lineItems) {
             grandTotal += item.getExtendedPrice();
@@ -45,14 +45,27 @@ public class Receipt {
         return grandTotal;
     }
 
-
-   
+    public void outputReceipt() {
+        String s = "Thanks for Shopping With Us!\n\n";
+        s += "Date of Receipt: 2/28/2013 3:15 PM\n";
+        s += "Sold to: " + customer.getFullName()+ "\n\n";
+        s += "ID\t" + "Desc\t" + "Price\t" + "Qty\t" + "Subtotal\t" + "Discount\n";
+        for (int i=0;i < lineItems.length; i++){
+          s +=  lineItems[i].getProductID() + "\t" + lineItems[i].getProductName() + "\t"
+                + lineItems[i].getProdQty() + "\t" + lineItems[i].getExtendedPrice() + "\t"
+               + lineItems[i].getProduct().getUnitCost() + "\t"  
+                + lineItems[i].getDiscount() + "\t\n";
+        }
+        System.out.println(s);
+    }    
     public static void main(String[] args) {
         // Expect .15 discount because qty >= 5
         Receipt receipt = new Receipt("100");
         System.out.println("CustID: " + receipt.customer.getCustId());
         System.out.println("Customer Name :" + receipt.customer.getFullName());
-        System.out.println("Total: " + receipt.getTotalBeforeDiscount());
+        receipt.addProductToSale("A101", 6);
+        receipt.addProductToSale("B205", 4);
+        receipt.outputReceipt();
     
     }
     

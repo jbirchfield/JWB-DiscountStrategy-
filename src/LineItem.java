@@ -23,6 +23,14 @@ public class LineItem {
     public double getExtendedPrice(){
         return product.getUnitCost() * prodQty;
     }    
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
     
     
     public String getProductID(){
@@ -33,6 +41,7 @@ public class LineItem {
         return product.getProductName();
     }
     
+        
     public double getDiscount(){
         return product.getDiscountAmt(prodQty);
     }
