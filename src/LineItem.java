@@ -22,8 +22,8 @@ public class LineItem {
     
     public double getExtendedPrice(){
         return product.getUnitCost() * prodQty;
-    }    
-
+    }  
+    
     public Product getProduct() {
         return product;
     }

@@ -1,6 +1,7 @@
 
-import java.text.SimpleDateFormat;
-import java.util.*; 
+import java.text.*;
+import java.util.*;
+
 public class Receipt {
     
     private LineItem[] lineItems = new LineItem[0];
@@ -45,12 +46,28 @@ public class Receipt {
     }                
               
     public double getTotalBeforeDiscount(){ 
-        double grandTotal = 0.0;
+        double beforeDiscountTotal = 0.0;
         for(LineItem item : lineItems) {
-            grandTotal += item.getExtendedPrice();
+            beforeDiscountTotal += item.getExtendedPrice();
         }
-        return grandTotal;
+        return beforeDiscountTotal;
     }
+    
+    public double getTotalDiscount() {
+        double totalDiscount = 0.0;
+        for(LineItem item : lineItems) {
+            totalDiscount += item.getDiscount();
+        }
+        return totalDiscount;
+    }
+            
+    public double getTotalAfterDiscount(){
+        double afterDiscountTotal = 0.0;
+        afterDiscountTotal = getTotalBeforeDiscount() - getTotalDiscount();
+        return afterDiscountTotal;
+    }
+    
+    DecimalFormat formatter = new DecimalFormat("#0.00");
 
     public void outputReceipt() {
         String s = "Thanks for Shopping With Us!\n\n";
@@ -59,17 +76,20 @@ public class Receipt {
         s += "ID\t" + "Desc\t" + "Price\t" + "Qty\t" + "Subtotal\t" + "Discount\n";
         for (int i=0;i < lineItems.length; i++){
           s +=  lineItems[i].getProductID() + "\t" + lineItems[i].getProductName() + "\t"
-                + lineItems[i].getProdQty() + "\t" + lineItems[i].getExtendedPrice() + "\t"
-               + lineItems[i].getProduct().getUnitCost() + "\t"  
-                + lineItems[i].getDiscount() + "\t\n";
+                + formatter.format(lineItems[i].getProduct().getUnitCost()) + "\t"  
+                + lineItems[i].getProdQty() + "\t" 
+                + formatter.format(lineItems[i].getExtendedPrice()) + "\t"
+                + formatter.format(lineItems[i].getDiscount()) + "\t\n";
         }
+          s += "Total Before Discount: " + formatter.format(getTotalBeforeDiscount()) + "\n";
+          s += "Total After Discount: " + formatter.format(getTotalAfterDiscount()) + "\n";
+          s += "Total Saved: " + formatter.format(getTotalDiscount());
+        
         System.out.println(s);
     }    
     public static void main(String[] args) {
         // Expect .15 discount because qty >= 5
         Receipt receipt = new Receipt("100");
-        System.out.println("CustID: " + receipt.customer.getCustId());
-        System.out.println("Customer Name :" + receipt.customer.getFullName());
         receipt.addProductToSale("A101", 6);
         receipt.addProductToSale("B205", 4);
         receipt.outputReceipt();
