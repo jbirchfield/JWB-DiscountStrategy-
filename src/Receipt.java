@@ -1,7 +1,8 @@
 
- 
+import java.text.SimpleDateFormat;
+import java.util.*; 
 public class Receipt {
- 
+    
     private LineItem[] lineItems = new LineItem[0];
     private Customer customer;
     private FakeDatabase db;
@@ -35,7 +36,13 @@ public class Receipt {
         lineItems = tempItems;
     }
     
-                    
+    public String getCurrentDate() {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        date = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        return sdf.format(date);
+    }                
               
     public double getTotalBeforeDiscount(){ 
         double grandTotal = 0.0;
@@ -47,7 +54,7 @@ public class Receipt {
 
     public void outputReceipt() {
         String s = "Thanks for Shopping With Us!\n\n";
-        s += "Date of Receipt: 2/28/2013 3:15 PM\n";
+        s += "Date of Receipt: " + getCurrentDate() + "\n\n";
         s += "Sold to: " + customer.getFullName()+ "\n\n";
         s += "ID\t" + "Desc\t" + "Price\t" + "Qty\t" + "Subtotal\t" + "Discount\n";
         for (int i=0;i < lineItems.length; i++){
