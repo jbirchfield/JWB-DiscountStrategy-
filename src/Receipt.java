@@ -81,9 +81,9 @@ public class Receipt {
                 + formatter.format(lineItems[i].getExtendedPrice()) + "\t"
                 + formatter.format(lineItems[i].getDiscount()) + "\t\n";
         }
-          s += "Total Before Discount: " + formatter.format(getTotalBeforeDiscount()) + "\n";
-          s += "Total After Discount: " + formatter.format(getTotalAfterDiscount()) + "\n";
-          s += "Total Saved: " + formatter.format(getTotalDiscount());
+          s += "\n\t\tTotal Before Discount: " + "\t" + formatter.format(getTotalBeforeDiscount()) + "\n";
+          s += "\t\tTotal After Discount: " + "\t" + formatter.format(getTotalAfterDiscount()) + "\n";
+          s += "\t\tTotal Saved: " + "\t\t" + formatter.format(getTotalDiscount());
         
         System.out.println(s);
     }    
