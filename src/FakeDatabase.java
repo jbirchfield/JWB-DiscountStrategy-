@@ -1,7 +1,9 @@
 
 /**
- *
- * @author jamesb
+ * This class provides arrays that can be used to provide customer and product information
+ * and the methods to access the arrays
+ * 
+ * @author Jim Birchfield
  */
 public class FakeDatabase {
 

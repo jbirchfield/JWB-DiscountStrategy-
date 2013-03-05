@@ -1,7 +1,8 @@
-
 /**
- *
- * @author jamesb
+ * This class defines the customer and provides the methods to get the customer name
+ * using the customer ID number
+ * 
+ * @author Jim Birchfield
  */
 public class Customer {
     private String custId;
@@ -30,12 +31,4 @@ public class Customer {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    
-    public static void main(String[] args) {
-        // Expect .15 discount because qty >= 5
-        Customer customer = new Customer("100","John Smith");
-        System.out.println("CustomerID: " + customer.getCustId());
-        System.out.println("Customer: " + customer.getFullName());
-    }    
-    
 }

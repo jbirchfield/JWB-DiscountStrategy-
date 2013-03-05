@@ -1,6 +1,11 @@
-/*
+/**
+ * This class use the product quantity, the product methods and the FakeDatabase class to get the information 
+ * information using the product ID as the key to the FakeDatabase
  * 
+ * @author Jim Birchfield
  */
+ 
+
 public class LineItem {
     private int prodQty;
     private Product product;
@@ -44,19 +49,5 @@ public class LineItem {
         
     public double getDiscount(){
         return product.getDiscountAmt(prodQty);
-    }
-    public static void main(String[] args) {
-        // Expect .15 discount because qty >= 5
-        LineItem lineItem = new LineItem("A101",6);
-        System.out.println("Prod ID: " + lineItem.product.getProductID() );
-        System.out.println("Product: " + lineItem.product.getProductName());
-        System.out.println("Unit Cost: " + lineItem.product.getUnitCost());
-        System.out.println("Quantity: " + lineItem.prodQty);
-        System.out.println("Extended Price: " + lineItem.getExtendedPrice());
-        System.out.println("Discount: " + lineItem.getDiscount());
-        System.out.println("Total: " + (lineItem.getExtendedPrice() - lineItem.getDiscount()));
-        
-        
-
     }
 }

@@ -1,3 +1,11 @@
+/**
+ * This class contains the interface used to calculate discounts.  Its abstract methods
+ * are implemented in the classes that implement this interface.  It serves as an
+ * abstraction layer.
+ * 
+ * @author Jim Birchfield
+ */
+
 
 public interface DiscountStrategy {
 

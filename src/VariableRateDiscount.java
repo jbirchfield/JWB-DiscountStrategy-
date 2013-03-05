@@ -1,4 +1,10 @@
-
+/**
+ * This class implements the DiscountStrategy interface.  A discount amount is
+ * calculated for any quantity of a purchased product.
+ * 
+ * @author Jim Birchfield
+ */
+ 
 public class VariableRateDiscount implements DiscountStrategy{
     private double discountRate;
     
@@ -17,10 +23,10 @@ public class VariableRateDiscount implements DiscountStrategy{
         this.discountRate = discountRate;
     }    
         
-    public static void main(String[] args) {
-        VariableRateDiscount app1 = new VariableRateDiscount(.10);
-        double amt = app1.getDiscountAmt(2, 20);
-        System.out.println("Discount amt: " + amt);
-    }
+//    public static void main(String[] args) {
+//        VariableRateDiscount app1 = new VariableRateDiscount(.10);
+//        double amt = app1.getDiscountAmt(2, 20);
+//        System.out.println("Discount amt: " + amt);
+//    }
     
 }

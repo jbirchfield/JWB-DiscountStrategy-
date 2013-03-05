@@ -1,4 +1,10 @@
-
+/**
+ * This class gets the customer name from the Customer class and the information created
+ * from the LineItem class and uses that to do all the calculations and formatting needed to
+ * create the receipt. It also gets the current date and time.
+ * 
+ * @author Jim Birchfield
+ */
 import java.text.*;
 import java.util.*;
 
@@ -15,7 +21,18 @@ public class Receipt {
         db = new FakeDatabase();
         customer = db.findCustomer(cID); 
     }
-     
+
+    public LineItem[] getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(LineItem[] lineItems) {
+        this.lineItems = lineItems;
+    }
+     /**
+      * This method obtains the value of the customer name
+      * @return customer name
+      */    
      public Customer getCustomer() {
         return customer;
     }
@@ -24,7 +41,12 @@ public class Receipt {
         this.customer = customer;
     }
      
-
+    /**
+     * This method accepts the product ID and quantity of product purchased and then uses
+     * the addToArray method to add a new line to the LineItem array
+     * @param prodID = product ID
+     * @param prodQty = quantity of the product purchased
+     */
     public void addProductToSale(String prodID, int prodQty){
         LineItem lineItem = new LineItem(prodID, prodQty);
         addToArray(lineItem);
@@ -87,14 +109,4 @@ public class Receipt {
         
         System.out.println(s);
     }    
-    public static void main(String[] args) {
-        // Expect .15 discount because qty >= 5
-        Receipt receipt = new Receipt("100");
-        receipt.addProductToSale("A101", 6);
-        receipt.addProductToSale("B205", 4);
-        receipt.outputReceipt();
-    
-    }
-    
-    
 }

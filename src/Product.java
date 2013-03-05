@@ -1,4 +1,9 @@
-
+/**
+ * This class defines the product and provides the methods to get the product information
+ * and determines which discount strategy to use
+ * 
+ * @author Jim Birchfield
+ */
 public class Product {
     
     private String productID;
@@ -7,7 +12,6 @@ public class Product {
     private DiscountStrategy discountStrategy;
     
     public Product(){
-        
     }
 
     public Product(String productID, String productName, double unitCost, DiscountStrategy discountStrategy) {
@@ -16,8 +20,7 @@ public class Product {
         this.unitCost = unitCost;
         this.discountStrategy = discountStrategy;
     }
-                
-    
+       
     public double getDiscountAmt(int qty) {
         return discountStrategy.getDiscountAmt(qty, unitCost);
     }
@@ -58,17 +61,4 @@ public class Product {
         this.discountStrategy = discount;
     }
     
- //   public static void main(String[] args) {
- 
- //   }
-    
-//    public static void main(String[] args) {
-//        Product prod1 = new Product("B345", "Pants",25.00, new QtyVariableRateDiscount(0.20, 6));
-//        double amt1 = prod1.getDiscountAmt(5);
-//        System.out.println("Discount amt: " + amt1);
-//        Product prod2 = new Product("B345", "Pants",25.00, new VariableRateDiscount(0.10));
-//        double amt2 = prod2.getDiscountAmt(5);
-//        System.out.println("Discount amt: " + amt2);
-//    }
-    
-}
+ }
